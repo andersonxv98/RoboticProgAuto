@@ -1,0 +1,154 @@
+{
+    "Ataque Habilidades": [
+        {
+            "Alcance": "2metros",
+            "Custo Acao": "10 min",
+            "Descricao": "zoio",
+            "Duracao": "10min",
+            "Materiais": "",
+            "Materiais: Gestos": "false",
+            "Materiais: Materiais": "false",
+            "Materiais: Verbal": "false",
+            "Nome": "helicoptero divino",
+            "Nvl": "nvl 1"
+        },
+        {
+            "Alcance": "2metros",
+            "Custo Acao": "10 min",
+            "Descricao": "zoio",
+            "Duracao": "10min",
+            "Materiais": "",
+            "Materiais: Gestos": "false",
+            "Materiais: Materiais": "false",
+            "Materiais: Verbal": "false",
+            "Nome": "bença divino",
+            "Nvl": "nvl 1"
+        },
+        {
+            "Alcance": "2metros",
+            "Custo Acao": "10 min",
+            "Descricao": "zoio",
+            "Duracao": "10min",
+            "Materiais": "",
+            "Materiais: Gestos": "false",
+            "Materiais: Materiais": "false",
+            "Materiais: Verbal": "false",
+            "Nome": "cabeçada divino",
+            "Nvl": "nvl 1"
+        },
+        {
+            "Alcance": "2metros",
+            "Custo Acao": "10 min",
+            "Descricao": "zoio",
+            "Duracao": "10min",
+            "Materiais": "",
+            "Materiais: Gestos": "false",
+            "Materiais: Materiais": "false",
+            "Materiais: Verbal": "false",
+            "Nome": "chute divino",
+            "Nvl": "nvl 1"
+        },
+        {
+            "Alcance": "2metros",
+            "Custo Acao": "10 min",
+            "Descricao": "zoio",
+            "Duracao": "10min",
+            "Materiais": "",
+            "Materiais: Gestos": "false",
+            "Materiais: Materiais": "false",
+            "Materiais: Verbal": "false",
+            "Nome": "soco divino",
+            "Nvl": "nvl 1"
+        }
+    ],
+    "Atributos": {
+        "Carisma": "15",
+        "Constituicao": "13",
+        "Destreza": "8",
+        "Forca": "10",
+        "Inteligencia": "16",
+        "Modificadores": {
+            "modificador carisma": "2",
+            "modificador constituicao": "1",
+            "modificador destreza": "-1",
+            "modificador forca": "0",
+            "modificador inteligencia": "3",
+            "modificador sabedoria": "1"
+        },
+        "Sabedoria": "12"
+    },
+    "Bonus Proeficiencia": "2",
+    "Caracteristicas": {
+        "Alinhamento": "Neutro Bom",
+        "Antecedente": "Eremita",
+        "Classe": "Druida",
+        "Nome Personagem": "ESPECTRO Tempesfuria",
+        "Nome jogador": "andisus",
+        "Raça": "Elfo",
+        "XP": {
+            "Nvl": "1",
+            "Pontos Atuais": "0.000000",
+            "Pontos Faltantes": "1400.000000",
+            "Pontos Totais": "1400.000000"
+        }
+    },
+    "Caracteristicas Habilidades": [
+        "VIsão noturna +8m",
+        "Madrugador",
+        "Oportunista: Ataque de Oportunidade + 5roll acerto",
+        "fugitivo: Vantagem em rolagem de fuga"
+    ],
+    "Idiomas": [
+        "Humano Padrão",
+        "Elfico",
+        "Numenoriano"
+    ],
+    "Mochila": [
+        {
+            "DANO": "10d2",
+            "NOME": "pacote de racao",
+            "PESO": "1",
+            "PRECO": "1",
+            "Propriedades": [
+                "UmpacoteSimples de racao"
+            ],
+            "TIPO": "nenhum"
+        },
+        {
+            "DANO": "1d4",
+            "NOME": "Adaga Sangrenta",
+            "PESO": "2",
+            "PRECO": "10",
+            "Propriedades": [
+                ""
+            ],
+            "TIPO": ""
+        }
+    ],
+    "Percepcao": "0",
+    "Status": {
+        "Armadura": "15",
+        "Dado de Vida": "1d8",
+        "Deslocamento": "7.5",
+        "HP": "12",
+        "HP temporario": "0",
+        "HP total": "10",
+        "Iniciativa": "10"
+    },
+    "Tracos": [
+        "Frio e calculista",
+        "UM VDD SHELBY"
+    ],
+    "defeitos": [
+        "Desvantagem na luz solar",
+        "Recebe 1d4 dano por turno em rodadas com exposição ao sol"
+    ],
+    "ideais": [
+        "Não machucamos a floresta ou o s seres dela",
+        "fazer o bem sem olhas a quem"
+    ],
+    "ligacoes": [
+        "Dimas o bardo sapeca",
+        "Samanta a vampira sugadora de Alegria"
+    ]
+}
