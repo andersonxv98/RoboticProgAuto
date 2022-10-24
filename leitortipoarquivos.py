@@ -113,39 +113,35 @@ class LeitorClassTyp():
         root_vet = arvore.getroot()
 
         print(root_vet) #le os elemento
-        print(root_vet[0].attrib) #le em formato de atributos parecido com json
+
+        for food in root_vet:
+            print(food)
+            for atrib in food:
+                print("     ",atrib)
+                print("         ",atrib.text)
+
+            #for name in food.findtext("name"):
+             #   print(name)
+
+        print(root_vet[0][1].text) # formato de atributos parecido com json
         print(root_vet[0][0].text) #le o texto
 
         return
 
-    def escreverXml(self, path, lista_elementos):
+    def escreverXml(self, path, root, atrib, values_atribs):
         #formato = {a, b, {c1, c2}, {d1, d2}, {e1, e2}}
-        for elemento1 in lista_elementos():
-            data = ET.Element(elemento1) #criando novo elemento
-            for child in elemento1:
-                element1 = ET.SubElement(data, child) #criando subelemento do elemento pai (data)
 
-                for child2 in child:
-                    s_elem1 = ET.SubElement(element1, child2) #sub elementos do element1
+        data = ET.Element(root) #criando novo elemento
+        for x in range(len(atrib)):
+            element1 = ET.SubElement(data, atrib[x])
+            for i in range(len(values_atribs[x])):
+                element2 = ET.SubElement(element1, values_atribs[x][i])
+                element2.text =(values_atribs[x][i])
 
-                    # Adicionando attributos nas tags
-                    # `items`
-                    for tipo in child2:
-                        s_elem1.set('type', tipo)
+        b_xml = ET.tostring(data)
+                # with operation mode `wb` (write + binary)
+        with open(path, "wb") as f:
+            f.write(b_xml)
 
-                    # Adiconando Texto entre elementos
-                    # subtag
-                        for texto in tipo:
-                            s_elem1.text = texto
-
-
-                    # Converter para xml data to byte object,
-                    # stream
-            b_xml = ET.tostring(data)
-
-                    # with operation mode `wb` (write + binary)
-            with open(path, "ab") as f:
-                f.write(b_xml)
-
-            f.close()
+        f.close()
         return

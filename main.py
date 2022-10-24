@@ -1,43 +1,8 @@
-from mouseeteclado import MouseETeclado
-from leitortipoarquivos import LeitorClassTyp
-import dataTeste
-
+from classedetestes import ClasseDeTestes
 def main():
-    print("Hello World!")
-    automatic = MouseETeclado()
-    classLeitorEscrit = LeitorClassTyp()
-    i = 1
-    while(i > 0):
-        automatic.pressionarEspaco()
-        i -= 1
+    tst = ClasseDeTestes()
+    tst.testar()
 
-    #automatic.escreverAlgoComTeclado("ESCREVA ISso")
-    #automatic.movimentarRelativamenteAPosicaoAtual(0,0)
 
-    #testes de leitor e escrita de arquivos:
-    listaDic = ["Ainda que eu falasse a lingua dos anjos", "Que eu falasse a lingua dos homens",
-                "Sem amor, Eu nada seria", "è só o amor", "è Só o amorm, que conhece  o que é vdd"]
-
-    nome_arquivoTxt = "monteCastelo.txt"
-    classLeitorEscrit.lerTxt("dataTeste/leitura.txt")
-    classLeitorEscrit.escreverTxt("dataTeste/"+nome_arquivoTxt,listaDic)
-    classLeitorEscrit.lerJson("dataTeste/ESPECTROTempesfuria.json")
-
-    dictiona = {"the fool": ["Te bar", "te Exemple", "The mother", "The god", "the son"], "Futas" : ["banana",
-            "maça", "uva", "salada mista"], "Siga" : ["em frente", [ "olhe para o", "lado", "se liga no mestiço" ] ] }
-
-    classLeitorEscrit.escreverJson("dataTeste/escreviESaiCorrendo.json", dictiona)
-
-    classLeitorEscrit.lerPdf("dataTeste/TCC_questes.pdf")
-
-    pdfTeste = ["I ve denounced my ethnicity",
-                "In favor of something more kawaii",
-                "Claim the land of the rising Sun",
-                "Where one piece comes from"]
-
-    classLeitorEscrit.escreverPdf("dataTeste/pd_escrito.pdf", "PDF GERADO PELO AUTOMATO HUGO CABRET", "DESENHA A LUA Ae MANO", pdfTeste)
-
-    classLeitorEscrit.lerCsv("dataTeste/cliente_valor_troco.csv")
-    classLeitorEscrit.escreverCsv("dataTeste/novo_escrito.csv", ["teste1", "teste2", "teste3"], [0,1,2,3,4,5,6,7,8])
 
 main()
