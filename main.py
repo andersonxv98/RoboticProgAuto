@@ -9,8 +9,8 @@ def main():
     window =MainWindow()
     window.show()
     tst = ClasseDeTestes()
-    tst.testar()
-
+    #tst.adicionarContatosNoGoogleAcounts("https://contacts.google.com/", "dataTeste/contatos.csv")
+    tst.adicionarContatosNoGrupoDoZap("dataTeste/zapteste.csv")
     app.exec()
 
 

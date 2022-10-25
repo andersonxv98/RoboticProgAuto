@@ -1,14 +1,17 @@
 import multiprocessing
 import subprocess
 from time import sleep
+
+from Controllers.aspectratio import AspectRatio
 from Controllers.mouseeteclado import MouseETeclado
 from Controllers.leitortipoarquivos import LeitorClassTyp
+import maskpass  # importing maskpass library
 
 
 class ClasseDeTestes():
     def __init__(self):
         super(ClasseDeTestes, self).__init__()
-
+        self.automatic = MouseETeclado()
 
     def testar(self):
         print("Hello World!")
@@ -61,8 +64,58 @@ class ClasseDeTestes():
 
         classLeitorEscrit.escreverXml("dataTeste/gerado.xml", pokemon, tipo, values_tipo)"""
 
-        process = subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe https://www.twitch.tv/")
+
+    def adicionarContatosNoGoogleAcounts(self, url, csvcaminho):
+        classLeitorEscrit = LeitorClassTyp()
+        matrix = classLeitorEscrit.lerCsv(csvcaminho)
+        process = subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe "+url)
         # start the process
-        automatic.tamanhoDaTela()
-        automatic.pocisionarMouse(0,0)
+        automatic = MouseETeclado()
+
+        """automatic.tamanhoDaTela()
+        automatic.clickarNoCampoDeEmailGoogleAcounts()
+
+        automatic.pressionarEnter()
+        automatic.escreverAlgoComTeclado(email)
+
+        automatic.escreverAlgoComTeclado(senha)
+        automatic.pressionarEnter()
+
+        #automatic.pocisionarMouse(0, 0)
+"""
+        espera = 5
+        sleep(6) #aguardar 1 minuto para  logar  em google acounts
+        print("PRINT MATRIX: ", matrix )
+        for contato in matrix:
+            arranomtel = []
+            for val in contato:
+                print("VALOR DENTRO LOOP CONTATO", val)
+                arranomtel.append(val)
+            automatic.clicarBntNovoContatoGoogleAcounts()
+            sleep(espera)
+            automatic.digitarCampoNomeETelefoneGoogleAcount(arranomtel[0].__str__(), arranomtel[1].__str__())
+            sleep(espera)
+            automatic.salvarContatoGoogleAcounts()
+            sleep(espera)
+            if AspectRatio().aspec_ratio <= 4/3:
+                automatic.clickarBtnVoltar()
+                sleep(1)
+
+    def adicionarContatosNoGrupoDoZap(self, csvcaminho):
+        classLeitorEscrit = LeitorClassTyp()
+        matrix = classLeitorEscrit.lerCsv(csvcaminho)
+        url = "https://web.whatsapp.com/"
+        subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe " + url)
+        sleep(15)
+        self.automatic.clickarNovoGrupoWtss()
+        print(matrix)
+        self.automatic.clickPrimeiraVezPesquisar()
+        for contato in matrix:
+            nome = contato[0]
+            self.automatic.digitarContatosParaGrupoZap(nome)
+            sleep(0.5)
+        self.automatic.clickBtnConfirmarGrupo()
+        sleep(0.5)
+        self.automatic.nomeDoGrupoZap("oFuturoJaComecou")
+
 

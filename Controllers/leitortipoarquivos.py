@@ -61,14 +61,20 @@ class LeitorClassTyp():
         return
 
     def lerCsv(self, path):
-        df = pd.read_csv(path)
-        print(df.to_string())
-        for row in df:
-            print(df)
-            #for cell in row:
-             #   print(cell)
+        result = []
+        with open(path, mode='r') as file:
+            # reading the CSV file
+            csvFile = csv.reader(file)
+            for row in csvFile:
+                low = (row[0])
+                vector = low.split(";")
+                print(vector[0])
+                result.append(vector)
+                #for cell in row:
+                 #   print(cell)
+            file.close()
 
-        return
+        return result
 
     def escreverCsv(self, path, header, data):
         with open(path, 'w', encoding='UTF8') as f:
