@@ -65,9 +65,10 @@ class ClasseDeTestes():
         classLeitorEscrit.escreverXml("dataTeste/gerado.xml", pokemon, tipo, values_tipo)"""
 
 
-    def adicionarContatosNoGoogleAcounts(self, url, csvcaminho):
+    def adicionarContatosNoGoogleAcounts(self, csvcaminho):
         classLeitorEscrit = LeitorClassTyp()
         matrix = classLeitorEscrit.lerCsv(csvcaminho)
+        url = "https://contacts.google.com/"
         process = subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe "+url)
         # start the process
         automatic = MouseETeclado()
@@ -110,12 +111,14 @@ class ClasseDeTestes():
         self.automatic.clickarNovoGrupoWtss()
         print(matrix)
         self.automatic.clickPrimeiraVezPesquisar()
+        i = 1
         for contato in matrix:
             nome = contato[0]
-            self.automatic.digitarContatosParaGrupoZap(nome)
+            self.automatic.digitarContatosParaGrupoZap(nome, i)
+            i+=1
             sleep(0.5)
-        self.automatic.clickBtnConfirmarGrupo()
-        sleep(0.5)
-        self.automatic.nomeDoGrupoZap("oFuturoJaComecou")
+        #self.automatic.clickBtnConfirmarGrupo()
+        #sleep(0.5)
+        #self.automatic.nomeDoGrupoZap("oFuturoJaComecouETaAutomatizado")
 
 

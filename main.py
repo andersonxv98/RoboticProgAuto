@@ -1,16 +1,15 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-from Controllers.classedetestes import ClasseDeTestes
-from Views.mainwindow import MainWindow
+
+from Controllers.ControllerTelasFuncoes import ControllerTelasFuncoes
+
 
 
 def main():
     app = QApplication(sys.argv)
-    window =MainWindow()
-    window.show()
-    tst = ClasseDeTestes()
-    #tst.adicionarContatosNoGoogleAcounts("https://contacts.google.com/", "dataTeste/contatos.csv")
-    tst.adicionarContatosNoGrupoDoZap("dataTeste/zapteste.csv")
+    cn =ControllerTelasFuncoes()
+    cn.chamarTelPrincipal()
+    #cn.ErrorShow()
     app.exec()
 
 

@@ -5,7 +5,8 @@ class AspectRatio:
         self.whidth = pya.size().width
         self.heigth = pya.size().height
         self.aspec_ratio =  self.whidth/ self.heigth
-
+        self.zapmax = False
+        self.zapMid = False
     def verAspectRatio(self):
         return self.aspec_ratio
 
@@ -87,30 +88,50 @@ class AspectRatio:
     def posBtnNovaConverssaZap(self):
         x = 308
         y = 104
+        if self.whidth < 1024:
+            x= 250
+            y = 101
 
         return x,y
 
     def posBtnNovoGrupoZap(self):
         x= 40
         y= 264
+        if self.aspec_ratio < 4/3:
+            x= 39
+            y=268
+            if self.whidth < 1024:
+                x= 34
+                y = 271
 
         return x,y
 
     def posNCZgrupoContato(self):
         x=44
         y=227
+        #if self.whidth < 1024:
+         #   x = 41
+          #  y = 227
 
         return x,y
 
     def posContatoZap(self):
-        x=39
-        y= 317
+        x = 39
+        y = 317
+        if self.whidth < 1024:
+            if self.zapMid:
+                y = 390
+            elif self.zapmax:
+                y = 415
 
         return  x,y
 
     def posBtnConfirmarZap(self):
         x= 195
         y = 665
+        if self.whidth < 1024:
+            x = 167
+            y = 515
 
         return x,y
 
@@ -119,3 +140,19 @@ class AspectRatio:
         y = 451
 
         return x,y
+
+    def changeMax(self, i):
+
+        if i >= 7 and self.whidth < 1024:
+            self.zapmax = True
+
+
+        return
+
+    def changeMid(self, i):
+
+        if i > 4 and i < 7 and self.whidth < 1024:
+            self.zapMid= True
+
+
+        return

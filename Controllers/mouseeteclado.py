@@ -169,11 +169,17 @@ class MouseETeclado():
         sleep(1)
         self.click()
         return
-    def digitarContatosParaGrupoZap(self, nomecompleto):
+    def digitarContatosParaGrupoZap(self, nomecompleto, n_contato):
         self.escreverAlgoComTeclado(nomecompleto)
         sleep(1)
 
-        x, y = AspectRatio().posContatoZap()
+
+        ratio = AspectRatio()
+
+        ratio.changeMid(n_contato)
+        ratio.changeMax(n_contato)
+
+        x, y = ratio.posContatoZap()
         sleep(1)
         self.pocisionarMouse(x, y)
         sleep(1)
