@@ -7,15 +7,61 @@ from Controllers.mouseeteclado import MouseETeclado
 from Controllers.leitortipoarquivos import LeitorClassTyp
 import maskpass  # importing maskpass library
 
+from Views.errorwindow import ErrorWindow
+
 
 class ClasseDeTestes():
     def __init__(self):
         super(ClasseDeTestes, self).__init__()
         self.automatic = MouseETeclado()
+        self.classLeitorEscrit = LeitorClassTyp()
 
-    def testar(self):
-        print("Hello World!")
-        automatic = MouseETeclado()
+    def leitura(self, path):
+        msg = ""
+        if ".csv" in path:
+            for colection in self.classLeitorEscrit.lerCsv(path):
+                for text in colection:
+                    msg += text + " : "
+                msg += " \n"
+        elif ".txt" in path:
+            msg = self.classLeitorEscrit.lerTxt(path)
+        elif ".xml" in path:
+            msg = self.classLeitorEscrit.lerXml(path)
+        elif ".pdf" in path:
+            for text in self.classLeitorEscrit.lerPdf(path):
+                msg  += text
+
+        elif ".json" in path:
+            msg = self.classLeitorEscrit.lerJson(path)
+
+        else:
+            er =ErrorWindow("Não foi possivel ler O Arquivo oNe CHAN", "Formato de Arquivo n suportado para leitura")
+            er.show()
+            msg = "ERROR"
+
+        return msg
+
+    def escrita(self, nomearquivo, data):
+        msg = ""
+        if ".csv" in nomearquivo:
+            self.classLeitorEscrit.escreverCsv(nomearquivo, data)
+        elif ".txt" in nomearquivo:
+            msg = self.classLeitorEscrit.escreverTxt(nomearquivo,data)
+        elif ".xml" in nomearquivo:
+            msg = self.classLeitorEscrit.escreverXml(nomearquivo, data[0], data[1], data[2])
+        elif ".pdf" in nomearquivo:
+            for text in self.classLeitorEscrit.escreverPdf(nomearquivo, data[0], data[1], data[2]):
+                msg += text
+
+        elif ".json" in nomearquivo:
+            msg = self.classLeitorEscrit.escreverJson(nomearquivo, data)
+
+        else:
+            er = ErrorWindow("Não foi possivel ler O Arquivo oNe CHAN", "Formato de Arquivo n suportado para leitura")
+            er.show()
+            msg = "ERROR"
+       # print("Hello World!")
+       # automatic = MouseETeclado()
         ''' classLeitorEscrit = LeitorClassTyp()
         i = 1
         while (i > 0):

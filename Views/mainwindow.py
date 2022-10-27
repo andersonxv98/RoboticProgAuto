@@ -3,6 +3,7 @@ from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QMainWindow, QLabel, QVBoxLayout, QWidget, QHBoxLayout
 
 from Views.ComponentesView.tabwidget import TabWidget
+from Views.ComponentesView.viewLeituraFront import ViewLeituraFront
 
 
 class MainWindow(QMainWindow):
@@ -19,6 +20,7 @@ class MainWindow(QMainWindow):
         #ELEMENTOS FILHOS EXTERNOS
         self.LayoutDeCimeEnunciado = QHBoxLayout()
         self.tabWindow = TabWidget()
+        self.laiyLeitura = ViewLeituraFront("teste")
         self.LayoutDeCimeEnunciado.setAlignment(Qt.AlignmentFlag.AlignTop)
         # self.LayoutDeCimeEnunciado.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.LayoutDeCimeEnunciado.addWidget(self.labelTitulo)
@@ -29,6 +31,7 @@ class MainWindow(QMainWindow):
         self.LayoutGeralDaWindow = QVBoxLayout()
         self.LayoutGeralDaWindow.addLayout(self.LayoutDeCimeEnunciado)
         self.LayoutGeralDaWindow.addWidget(self.tabWindow)
+        self.LayoutGeralDaWindow.addLayout(self.laiyLeitura)
         container = QWidget()
         container.setLayout(self.LayoutGeralDaWindow)
         self.setCentralWidget(container)

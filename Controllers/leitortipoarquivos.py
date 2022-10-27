@@ -13,18 +13,21 @@ class LeitorClassTyp():
         super().__init__()
 
     def lerJson(self, path):
-        if ".json" in path:
-            f = open(path)
-            # a dictionary ESCREVA ISso
-            data = json.load(f)
-            for lk in data:
-                print(lk)
-                for nb in data[lk]:
-                    print(nb)
+        f = open(path)
+        msg = ""
+        # a dictionary ESCREVA ISso
+        data = json.load(f)
+        for lk in data:
+            print(lk)
+            msg += lk +" : "
+            for nb in data[lk]:
+                print(nb)
+                #if not nb == type<str>:
+                msg += str(nb) +","
+            msg += " \n"
+        f.close()
 
-            f.close()
-            return True,
-        return False
+        return msg
 
     def recursJson(self, data):
         for param in data:
@@ -43,15 +46,15 @@ class LeitorClassTyp():
         return
 
     def lerTxt(self, path):
-        if ".txt" in path:
-            f = open(path, "r")
-            msg= []
-            for line in f.readlines():
-                print(line)
-                msg.append(line)
-            f.close()
-            return True,  msg
-        return False, []
+        msg = ""
+        f = open(path, "r")
+
+        for line in f.readlines():
+            print(line)
+            msg += (line)
+        f.close()
+        return msg
+
 
     def escreverTxt(self, path, lista_msg):
         with open(path, 'w') as f:
@@ -76,18 +79,19 @@ class LeitorClassTyp():
 
         return result
 
-    def escreverCsv(self, path, header, data):
+    def escreverCsv(self, path, data):
         with open(path, 'w', encoding='UTF8') as f:
             writer = csv.writer(f, delimiter=' ')
             # write the header
 
-            writer.writerow(header)
+            #writer.writerow(header)
 
             # write the data
             writer.writerow(data)
         f.close()
         return
     def lerPdf(self, path):
+
         reader = PdfReader(path)
         #number_of_pages = len(reader.pages)
         textoporpagina = []
@@ -97,7 +101,7 @@ class LeitorClassTyp():
             textoporpagina.append(text)
 
         print(textoporpagina)
-        return
+        return textoporpagina
 
     def escreverPdf(self, path, titulo, subtitulo, lista):
         pdf = FPDF()
@@ -123,22 +127,24 @@ class LeitorClassTyp():
     def lerXml(self, path):
         arvore = ET.parse(path)
         root_vet = arvore.getroot()
-
+        msg = ""
         print(root_vet) #le os elemento
 
         for food in root_vet:
             print(food)
+            msg += str(food.text) + " :"
             for atrib in food:
                 print("     ",atrib)
                 print("         ",atrib.text)
-
+                msg += " "+ atrib.text
+            msg += " \n"
             #for name in food.findtext("name"):
              #   print(name)
 
         print(root_vet[0][1].text) # formato de atributos parecido com json
         print(root_vet[0][0].text) #le o texto
 
-        return
+        return  msg
 
     def escreverXml(self, path, root, atrib, values_atribs):
         #formato = {a, b, {c1, c2}, {d1, d2}, {e1, e2}}

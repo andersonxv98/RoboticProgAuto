@@ -7,6 +7,7 @@ class AspectRatio:
         self.aspec_ratio =  self.whidth/ self.heigth
         self.zapmax = False
         self.zapMid = False
+        self.max1366= False
     def verAspectRatio(self):
         return self.aspec_ratio
 
@@ -123,6 +124,14 @@ class AspectRatio:
                 y = 390
             elif self.zapmax:
                 y = 415
+        elif self.whidth > 1024:
+
+            if self.max1366:
+                y= 450
+            elif self.zapMid:
+                y = 360
+            elif self.zapmax:
+                y = 415
 
         return  x,y
 
@@ -145,14 +154,18 @@ class AspectRatio:
 
         if i >= 7 and self.whidth < 1024:
             self.zapmax = True
-
-
+        elif(i >= 7 and self.whidth > 1024):
+            self.zapmax = True
         return
 
     def changeMid(self, i):
 
-        if i > 4 and i < 7 and self.whidth < 1024:
+        if i > 4 and i < 7 :
             self.zapMid= True
 
 
         return
+
+    def chanceMax1366(self, i):
+        if i > 11:
+            self.max1366 = True;

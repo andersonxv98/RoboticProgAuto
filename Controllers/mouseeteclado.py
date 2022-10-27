@@ -178,7 +178,7 @@ class MouseETeclado():
 
         ratio.changeMid(n_contato)
         ratio.changeMax(n_contato)
-
+        ratio.chanceMax1366(n_contato)
         x, y = ratio.posContatoZap()
         sleep(1)
         self.pocisionarMouse(x, y)
