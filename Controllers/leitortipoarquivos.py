@@ -40,8 +40,12 @@ class LeitorClassTyp():
     def escreverJson(self, path, dicionario):
         #json_object = json.dumps(dicionario)
         print(dicionario)
+        dict1= {}
+        for line in dicionario.split("\n"):
+            command = line.split(":")
+            dict1[command[0]] = command[1].split(",")
         with open(path, "w") as outfile:
-            json.dump(dicionario, outfile)
+            json.dump(dict1, outfile)
             outfile.close()
         return
 
@@ -59,7 +63,7 @@ class LeitorClassTyp():
     def escreverTxt(self, path, lista_msg):
         with open(path, 'w') as f:
             for msg in lista_msg:
-                f.write(msg+"\n")
+                f.write(msg)
             f.close()
         return
 
@@ -81,13 +85,14 @@ class LeitorClassTyp():
 
     def escreverCsv(self, path, data):
         with open(path, 'w', encoding='UTF8') as f:
-            writer = csv.writer(f, delimiter=' ')
+            writer = csv.writer(f)
             # write the header
 
             #writer.writerow(header)
 
             # write the data
-            writer.writerow(data)
+            for row in data.split("\n"):
+                writer.writerow(row)
         f.close()
         return
     def lerPdf(self, path):
@@ -146,15 +151,17 @@ class LeitorClassTyp():
 
         return  msg
 
-    def escreverXml(self, path, root, atrib, values_atribs):
+    def escreverXml(self, path, root):
         #formato = {a, b, {c1, c2}, {d1, d2}, {e1, e2}}
 
-        data = ET.Element(root) #criando novo elemento
-        for x in range(len(atrib)):
-            element1 = ET.SubElement(data, atrib[x])
-            for i in range(len(values_atribs[x])):
-                element2 = ET.SubElement(element1, values_atribs[x][i])
-                element2.text =(values_atribs[x][i])
+        data = ET.Element("root") #criando novo elemento
+        for line in root.split("\n"):
+            elements_val = line.split(":")
+            element1 = ET.SubElement(data, elements_val[0])
+            for values in elements_val[1].split(","):
+                filtrado  = values.replace(" ", "")
+                element2 = ET.SubElement(element1, filtrado)
+                element2.text =(filtrado)
 
         b_xml = ET.tostring(data)
                 # with operation mode `wb` (write + binary)

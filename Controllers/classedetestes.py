@@ -48,7 +48,7 @@ class ClasseDeTestes():
         elif ".txt" in nomearquivo:
             msg = self.classLeitorEscrit.escreverTxt(nomearquivo,data)
         elif ".xml" in nomearquivo:
-            msg = self.classLeitorEscrit.escreverXml(nomearquivo, data[0], data[1], data[2])
+            msg = self.classLeitorEscrit.escreverXml(nomearquivo, data)
         elif ".pdf" in nomearquivo:
             for text in self.classLeitorEscrit.escreverPdf(nomearquivo, data[0], data[1], data[2]):
                 msg += text
